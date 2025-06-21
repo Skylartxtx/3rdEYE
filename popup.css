@@ -1,0 +1,1234 @@
+
+/*主内容*/
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    
+}
+
+.popup-container {
+    width: 400px;
+    background-color: #fffdfd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px; 
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.title {
+    margin-top: 10px;
+    display: flex;
+}
+
+.title-light {
+    font-weight: normal; /* 设置3rd为正常字体 */
+    font-size: 14px;
+    color: #666; /* 浅灰色 */
+}
+
+.title-bold {
+    font-weight: bold; /* 设置EYE为粗体 */
+    font-size: 14px;
+    color: #000; /* 黑色 */
+}
+.content {
+    margin-top: 10px;
+}
+
+.label {
+    font-size: 20px;
+    font-weight: 900;
+    font-style: italic;
+    color: black; /* Adjust if needed */
+}
+
+.grade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px; /* 设置大号字体 */
+    color: #f7707c; 
+}
+
+/* 加载部分的动画 */
+#loading-animation {
+    margin: auto auto;
+    width: 400px;
+    position: relative;
+    width: 175px;
+    height: 55px;
+}
+
+#loading-animation span {
+    display: block;
+    background: #ccc;
+    width: 7px;
+    height: 10%;
+    border-radius: 20px;
+    margin-right: 5px;
+    float: left;
+    margin-top: 25%;
+}
+
+
+
+
+.loader span:last-child {
+  margin-right: 0;
+}
+
+.loader span:nth-child(1) {
+    animation: load 2.5s 1.4s infinite linear;
+  }
+  
+  .loader span:nth-child(2) {
+    animation: load 2.5s 1.2s infinite linear;
+  }
+  
+  .loader span:nth-child(3) {
+    animation: load 2.5s 1s infinite linear;
+  }
+  
+  .loader span:nth-child(4) {
+    animation: load 2.5s 0.8s infinite linear;
+  }
+  
+  .loader span:nth-child(5) {
+    animation: load 2.5s 0.6s infinite linear;
+  }
+  
+  .loader span:nth-child(6) {
+    animation: load 2.5s 0.4s infinite linear;
+  }
+  
+  .loader span:nth-child(7) {
+    animation: load 2.5s 0.2s infinite linear;
+  }
+  
+  .loader span:nth-child(8) {
+    animation: load 2.5s 0s infinite linear;
+  }
+  
+  .loader span:nth-child(9) {
+    animation: load 2.5s 0.2s infinite linear;
+  }
+  
+  .loader span:nth-child(10) {
+    animation: load 2.5s 0.4s infinite linear;
+  }
+  
+  .loader span:nth-child(11) {
+    animation: load 2.5s 0.6s infinite linear;
+  }
+  
+  .loader span:nth-child(12) {
+    animation: load 2.5s 0.8s infinite linear;
+  }
+  
+  .loader span:nth-child(13) {
+    animation: load 2.5s 1s infinite linear;
+  }
+  
+  .loader span:nth-child(14) {
+    animation: load 2.5s 1.2s infinite linear;
+  }
+  
+
+  
+@keyframes load {
+  0% {
+    background: #ccc;
+    margin-top: 25%;
+    height: 10%;
+  }
+  50% {
+    background: #444;
+    height: 100%;
+    margin-top: 0%;
+  }
+  100% {
+    background: #ccc;
+    height: 10%;
+    margin-top: 25%;
+  }
+}
+
+/*分数显示*/
+#grade-value {
+    font-style: italic;
+    font-size: 40px; /* 设置大号字体 */
+    color: #58D68D;  /* 设置绿色，与你的分数颜色一致 */
+    margin-right: 5px; /* 分数与/100之间的间距 */
+}
+
+#grade-max {
+    font-size: 10px; /* 设置较小的字体 */
+    color: #000;     /* 设置/100的颜色为黑色 */
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    justify-content: space-around;
+    padding: 10px 0;
+
+}
+
+.arrow {
+    height: 15px;
+    width: 15px;
+}
+
+/*AI评分*/
+.AI-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#AI-left {
+    font-weight: bold;
+    font-size: 15px;
+    color: #333;
+}
+
+#AI-right {
+    display: flex;
+    flex-direction: column; /* 使图片位于文字上方 */
+    align-items: center;    /* 使图片和文字水平居中 */
+    font-size: 10px;
+    color: #333;
+    cursor: pointer;
+    z-index: 10; /* Ensure "AI-right" is above other elements */
+    position: relative; /* Ensure z-index takes effect */
+}
+
+.rubric-icon {
+    
+    margin-bottom: 0px; /* 图标与文字之间的间距 */
+}
+
+.expanded-content {
+    display: none;
+    text-align: left;
+    width: 100%;
+    height: auto; /* 统一内容部分高度 */
+}
+
+/* 滑动栏设置仅在 report-section, history-section, analysis-section, setting-section */
+
+.report-section, .history-section, .analysis-section, .setting-section {
+    width: 100%;
+    height: 370px;
+    max-height: 400px; 
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    overflow-y: auto; /* 启用垂直滚动 */
+
+}
+
+
+.report-label {    
+    font-size: 12px;
+    color: #333;
+    display: block;
+    text-align: center;
+}
+
+.analysis-section .analysis-label, .analysis-section .analysis-label {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+/*report*/
+.report-section .chart {
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.report-chart {
+    max-width: 100%; /* 保证图表不会超出容器宽度 */
+    height: auto; /* 使图表保持比例 */
+}
+.chart-grade {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.legend {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: -10px;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.legend-color {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+strong.credibility {
+    margin-top: -8px;
+    margin-right: 49px;
+}
+
+strong.accuracy {
+    margin-top: -8px;
+    margin-right: 50px;
+}
+
+strong.consistency {
+    margin-top: -8px;
+    margin-right: 32px;
+}
+
+strong.style {
+    margin-top: -8px;
+    margin-right: 82px;
+}
+
+.legend-color.credibility {
+    background-color: #855DFA;
+    margin-bottom: 10px;
+}
+
+.legend-color.accuracy {
+    background-color: #FCA494;
+    margin-bottom: 10px;
+}
+
+.legend-color.consistency {
+    background-color: #FF81B4;
+    margin-bottom: 10px;
+}
+
+.legend-color.style {
+    background-color: #71CDE7;
+    margin-bottom: 10px;
+}
+
+span.credibility2 {
+    margin-top: -8px;
+    color: #999;
+    cursor: pointer;
+}
+
+span.accuracy2 {
+    margin-top: -8px;
+    color: #999;
+    cursor: pointer;
+}
+
+span.consistency2 {
+    margin-top: -8px;
+    color: #999;
+    cursor: pointer;
+}
+
+span.style2 {
+    margin-top: -8px;
+    color: #999;
+    cursor: pointer;
+}
+
+/* Modal styles */
+#detailsModal1 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    overflow-y: auto; 
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+/* Modal overlay */
+#modalOverlay1 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+/* Modal styles */
+#detailsModal2 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    overflow-y: auto; 
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+/* Modal overlay */
+#modalOverlay2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+/* Modal styles */
+#detailsModal3 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    overflow-y: auto; 
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+/* Modal overlay */
+#modalOverlay3 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+/* Modal styles */
+#detailsModal4 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    overflow-y: auto; 
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+/* Modal overlay */
+#modalOverlay4 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+/* Modal styles */
+#detailsModal5 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Keep the same width */
+    height: 70%;
+    max-height: 45vh;
+    overflow-y: auto;
+    background-color: #fef7e1;
+    padding: 0; /* Remove padding around the canvas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+/* Modal overlay */
+#modalOverlay5 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+/*scoring rubric*/
+#scoringModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-height: 80vh;
+    overflow-y: auto; 
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#modalOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+.closeBtn {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5em;
+    margin: -20px -20px 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+.closeBtn1 {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5em;
+    margin: -20px -20px 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+.closeBtn2 {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5em;
+    margin: -20px -20px 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+.closeBtn3 {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5em;
+    margin: -20px -20px 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+.closeBtn4 {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5em;
+    margin: -20px -20px 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+.closeBtn5 {
+    cursor: pointer;
+    position: absolute; /* Make the close button positioned absolutely */
+    top: 10px; /* Adjust to position it at the top-right of the modal */
+    right: 10px;
+    z-index: 1100; /* Set a high z-index to ensure it's above other elements */
+    width: 24px;
+    height: 24px;
+}
+
+#scoringModal ul {
+    margin-left: -25px;
+}
+
+#scoringModal p strong {
+    font-size: 1.2em;
+}
+
+/*radar chart*/
+#canvas {
+    display:flex;
+    width:100%;
+    margin-bottom:-50px;
+}
+
+/*history*/
+.history-section{
+    overflow-y: auto;
+}
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.clear-history-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.trash-icon {
+    width: 20px;
+    height: 20px;
+}
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.search-input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.history-content {
+    margin-top: 10px;
+}
+
+.history-day1 .history-day2 .history-day3 .history-day4 .history-day5 .history-day6 .history-day7 {
+    margin-bottom: 15px;
+}
+
+.day-label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.page-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+.page-icon1 {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px; /* Add some space between the icon and title */
+    vertical-align: middle; /* Align icon with text */
+}
+
+.history-text {
+    flex-grow: 1;
+    font-size: 12px;
+    color: #333;
+}
+
+.history-time {
+    font-size: 12px;
+    color: #888;
+}
+/*analysis*/
+.analysis-section {
+    box-sizing: border-box;
+    position: relative;
+    overflow-y: auto; /* 启用垂直滚动 */
+    max-height: 2000px; /* 设置最大高度，允许内容超出时滚动 */
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+    /*expanded-section*/
+
+    #Most-visited-expaned {
+        position: relative;
+        background-color: #efcbbe;
+        padding: 20px;
+        border-radius: 15px;
+    }
+    .details-link {
+        color: #6e6e6e;
+        cursor: pointer;
+    }
+    
+    .circle-chart {
+        display: flex;
+        justify-content: space-around;
+        align-items: center; /* 垂直居中 */
+        padding: 20px 0;
+        align-items: flex-end; /* 底部对齐 */
+        padding: 20px 0;
+        gap: 0; 
+        flex-wrap: nowrap;
+    }
+    
+    .circle {
+        width: 50px;
+        height: 50px;
+        transition: width 0.3s, height 0.3s,margin 0.3s;
+        background-color: #ccc;
+        border-radius: 50%;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7); /* 添加阴影 */
+        
+    }
+    
+    .purple {
+        background-color: #855DFD;
+    }
+    
+    .yellow {
+        background-color: #FFFF3E;
+    }
+    
+    .pink {
+        background-color: #FE7DB3;
+    }
+    
+    .red {
+        background-color: #FFA497;
+    }
+    .cyan {
+        background-color: #81E5FE;
+    } 
+
+    .date-range {
+        
+        text-align: center;
+        margin: 20px 0;
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #555;
+    }
+    #type-detail{
+        background-color: #fbeedd;
+        padding: 5px;
+    }
+
+    .record-item{
+        border-radius: 5%;
+        display: flex;
+        align-items: center;
+        margin: 20px 10px;
+        background-color: #ffffff;
+
+    }
+
+    .color-dot {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin: 10px
+    }
+
+    .record-content {
+
+        flex-grow: 1;
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .record-title {
+        font-size: 16px;
+        font-weight: 500;
+        color: black;
+    }
+    .record-details {
+        font-size: 14px;
+        color: gray;
+    }
+    
+    .record-percentage {
+        font-size: 16px;
+        font-weight: 500;
+        color: gray;
+        margin: 10px;
+    }
+
+
+
+    .collapse-btn {
+        text-align: center;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+
+
+.summary-item {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.summary-item h3 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.summary-item span {
+    font-size: 14px;
+    color: #333;
+}
+
+.summary-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+.summary-item .details-average {
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.details-average a:hover {
+    text-decoration: underline;
+}
+.summary-item.most-news {
+    background-color: #f8d7da;
+    color: #c4183c;
+}
+
+.summary-item.average-score {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.summary-item.highest-score {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.summary-item.lowest-score {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+/*average score*/
+#averageScoreChart {
+    width: 100%; /* Occupy full width */
+    height: 100%; /* Occupy full height */
+    border: none; /* Remove border */
+    background-color: #fef7e1; /* Keep yellow background */
+    font-family: 'Roboto', sans-serif;
+}
+
+/*SETTING*/
+.setting-section {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.setting-item {
+    position: relative;
+    display: flex; /* 使用 flexbox 布局 */
+    align-items: center; /* 垂直方向居中对齐 */
+    justify-content: space-between; /* 在左右两边对齐 */
+    padding-bottom: 40px;
+
+}
+.setting-label {
+    font-family: 'Roboto', sans-serif; /* 设置字体为 Roboto */
+    font-weight: 800; /* 设置为 ExtraBold */
+    font-size: 16px; /* 字号设置为 16px */
+    color: #000000; /* 字体颜色设置为黑色 */
+    display: inline-block;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: 0; /* 调整顶部对齐 */
+    vertical-align: middle; /* 与文本垂直对齐 */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+/*滑块：伪元素 ::before 来创建和控制这个滑块的外观和行为*/
+.slider:before {
+    font-family: 'Roboto', sans-serif; /* 设置字体为 Roboto */
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;/*animation*/
+    border-radius: 50%;
+}
+
+/*当 input 元素被选中时，slider 的背景色会变成紫色*/
+input:checked + .slider {
+    background-color: #7D5FFF; /* 设置开启状态的紫色背景 */
+}
+/*动画：，slider 内的 ::before 伪元素（小圆点）会向右滑动，以模拟开关开启的视觉效果*/
+input:checked + .slider:before {
+    transform: translateX(14px);/*Move 14 pixels horizontally*/
+}
+
+.status-text {
+    position: absolute;
+    bottom: 20px;  /* 将其定位到父容器的底部 */
+    left: 0;    /* 将其定位到父容器的左侧 */
+    font-size: 14px;
+    color: grey;
+}
+
+.footer-links {
+    position: absolute;
+    bottom: 10px; /* 距离底部 10px */
+    left: 10px; /* 距离左侧 10px */
+    text-align: left; /* 文本左对齐 */
+}
+    /*底部超链接*/
+.footer-links a {
+    display: block;
+    margin: 5px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/*FOOTER*/
+.footer#toggle-area{
+    /*margin-top: 10px;*/
+    background-color: #F5F5F5;
+    border-top: 2px solid #CCC;
+
+}
+.footer#bottom{
+    
+    background-color: #CCC;
+    padding: 0; /* 移除内边距 */
+}
+
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    color: #666;
+    flex-grow: 1; /* 使每个 nav-item 占据相同宽度 */
+    padding: 10px 0; /* 内边距用于给图标和文字之间的空间 */
+    cursor: pointer;
+    transition: background-color 0.3s; /* 添加过渡效果 */
+}
+
+.nav-item.active {
+    background-color: #ffffff; /* 选中的背景色 */
+    color: #000; /* 选中的文字颜色 */
+}
+
+.nav-item img {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+/* Privacy popup*/
+.closeBtn6 {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5em;
+    margin: -20px -20px 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+.header-privacy-popup{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#details-privacy{
+    cursor: pointer;
+}
+
+#details-privacy:hover {
+    text-decoration: underline;
+}
+
+#modalOverlay6 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+#detailsModal6 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+    /* Privacy Policy Title */
+#detailsModal6 h2 {
+    font-size: 24px;
+    color: #4e8fcc;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-right: auto;
+}
+
+
+
+    /* Logo beside the title */
+.logo1 {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
+    /* Content paragraph styling */
+#detailsModal6 p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+    /* Styling for links inside the modal */
+.highlight1 {
+    color: #4DC0FF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.highlight1:hover {
+    text-decoration: underline;
+}
+
+#detailsModal6 a:link {
+    text-decoration: none;
+    color: #4DC0FF;
+}
+  
+#detailsModal6 a:visited {
+    text-decoration: none;
+}
+  
+#detailsModal6 a:hover {
+    text-decoration: underline;
+}
+  
+#detailsModal6 a:active {
+    text-decoration: underline;
+}
+
+
+    /* Adjust the scroll bar */
+#detailsModal6::-webkit-scrollbar {
+    width: 6px;
+}
+
+#detailsModal6::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#detailsModal6::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+#detailsModal6::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* help-popup */
+#modalOverlay-help {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+#detailsModal-help {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.closeBtn-help {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5em;
+    margin: -20px -20px 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+#details-help{
+    cursor: pointer;
+}
+
+#details-help:hover {
+    text-decoration: underline;
+}
+
+#detailsModal-help h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+    /* FAQ item styles */
+.faq{
+    font-size: 17.5px;
+    font-weight: bold;
+}
+
+.faq-item h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.faq-item p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#detailsModal-help a:link {
+    text-decoration: none;
+    color: #4DC0FF;
+}
+  
+#detailsModal-help a:visited {
+    text-decoration: none;
+}
+  
+#detailsModal-help a:hover {
+    text-decoration: underline;
+}
+  
+#detailsModal-help a:active {
+    text-decoration: underline;
+}
+
+.header-help{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.help-icon {
+    width: 20px;
+    height: 20px;
+}
+

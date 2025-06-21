@@ -1,0 +1,82 @@
+/*privacy-policy*/
+.privacy-header {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+}
+
+.modal {
+    background-color: #F5F5F5;
+    width:700px;
+    height:auto;
+
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-header {
+    display: flex;
+    align-items: center; /* 垂直方向居中对齐 */
+    justify-content: center;
+    padding-top: 20px;
+    margin-bottom: -20px;
+
+}
+
+.modal-term{
+    margin-top: -40px;
+    padding: 5%;
+}
+.modal-icon {
+    width: 40px; /* 根据需要调整图标大小 */
+    height: 40px;
+    margin-right: 10px; /* 图标与标题之间的间距 */
+}
+
+.modal-header h2 {
+    color: #66AF9C;
+    margin: 0; /* 移除默认的 h2 上下外边距 */
+    font-size: 24px; /* 根据需要调整标题大小 */
+}
+
+.modal p {
+    color: #2B6770;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    
+}
+
+.modal button {
+    padding: 10px 20px;
+    background-color: #2B6770;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.highlight {
+    color: #4DC0FF; /* 高亮 */
+    text-decoration: none;
+}
+
+.modal ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+button#agree-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #2C626E;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button#agree-button:hover {
+    background-color: rgb(197, 228, 215);
+}

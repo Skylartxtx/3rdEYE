@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "3rdEYE",
+    "version": "1.0",
+    "description": "A simple and useful plugin for detecting misinformation.",
+    "icons": {
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+    "action": {
+        "default_popup": "privacy.html",
+        "default_icon": {
+            "16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        },
+         "default_title": "Click to see the privacy popup"
+    },
+    "permissions": [
+        "storage",
+        "notifications",
+        "contextMenus",
+        "scripting" ,
+        "tabs",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "background": {
+        "service_worker": "background.js"  
+    }
+    
+}

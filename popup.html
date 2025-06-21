@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>3rdEYE</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="popup-container">
+        <div class="header">
+            <img src="icon16.png" alt="TrustedNews Logo" class="logo">
+            <span class="title">
+                <span class="title-light">3rd</span>
+                <span class="title-bold">EYE</span>
+            </span>
+        </div>
+        <div class="content">
+            <span class="label">Article Credibility Grade:</span>
+            <span class="grade">
+                <div id="loading-animation" class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    
+
+                </div> 
+                <div id="grade-display" style="display:none;">
+                    <span id="grade-value"></span>
+                    <span id="grade-max">/100</span>
+                </div>
+            </div></span>
+        </div>
+
+        <div class="footer" id="toggle-area">
+            <img src="picture/down-arrow.png" alt="Expand" class="arrow" id="toggle-button">
+        </div>
+        <div class="expanded-content" id="expanded-content">
+
+            <!--AI报告-->
+            <div class="report-section" id="report-section">
+                <div class="AI-header">
+                    <span id="AI-left">Analysis from AI:</span>
+                    <div id="AI-right">
+                        <img src="picture/reference.png" alt="Scoring Rubric Icon" class="rubric-icon">
+                        <span>scoring rubric</span>
+                    </div>
+
+                    <div id="modalOverlay"></div>
+
+                    <div id="scoringModal">
+                        <img src="picture/close.png" alt="Close Icon" class="closeBtn" id="closeBtn">
+                        <h2>Scoring Rubric</h2>
+                        <p>Following scoring criteria gives a credibility score (out of 100).</p>
+                        
+                        <p><strong>1. Source Credibility (30 points)</strong>
+                            <ul>
+                                <li><strong>News Outlet, Domain (15 points):</strong>
+                                    <ul>
+                                        <li>Full 15 points for reputable mainstream news websites (e.g., national news media, well-known international outlets).</li>
+                                        <li>8-12 points for secondary sources (e.g., local news, industry-specific media).</li>
+                                        <li>0-7 points for unknown or non-mainstream sources.</li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li><strong>Author (15 points):</strong>
+                                    <ul>
+                                        <li>Full 15 points for authors with extensive journalism experience, expertise in the relevant field, or professional journalism training.</li>
+                                        <li>8-12 points for authors with unclear or questionable backgrounds.</li>
+                                        <li>0-7 points for anonymous authors or those with no available information.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </p>
+                        <p><strong>2. Content Accuracy (35 points)</strong>
+                            <ul>
+                                <li><strong>Citations (5 points):</strong>
+                                    <ul>
+                                        <li>Full 5 points if the article includes multiple credible citations with clear attributions.</li>
+                                        <li>2-4 points if some citations are present but lack full or clear attribution.</li>
+                                        <li>0-1 points if there are no citations or citations are unreliable.</li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li><strong>Comparison with Other Media (15 points):</strong>
+                                    <ul>
+                                        <li>Full 15 points if the content aligns with multiple authoritative media reports.</li>
+                                        <li>8-12 points if the content aligns with some authoritative media reports.</li>
+                                        <li>0-7 points if the content significantly differs from other authoritative media reports.</li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li><strong>Fact-Checking (15 points):</strong>
+                                    <ul>
+                                        <li>Full 15 points if the content is able to pass fact-checking.</li>
+                                        <li>8-12 points if some of the content is able to pass fact-checking.</li>
+                                        <li>0-7 points if the content fails fact-checking or contains obvious errors.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </p>
+                        <p><strong>3. Logical Consistency (10 points)</strong>
+                            <ul>
+                                <li><strong>Contradictory Details (10 points):</strong>
+                                    <ul>
+                                        <li>Full 10 points if the content is consistent throughout, with no self-contradictions or logical flaws.</li>
+                                        <li>5-9 points if there are minor contradictions or logical gaps.</li>
+                                        <li>0-4 points if there are significant logical errors or contradictions.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <p>
+                        <p><strong>4. Content Style (25 points)</strong>
+                            <ul>
+                                <li><strong>Sensationalism, Emotional Tone (15 points):</strong>
+                                    <ul>
+                                        <li>Full 15 points if the language is neutral and objective, with no apparent sensationalism or emotional manipulation.</li>
+                                        <li>5-10 points if there is some emotional tone or use of exaggerated headlines.</li>
+                                        <li>0-4 points if the content is overtly sensationalistic or uses extreme language.</li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li><strong>Political or Economic Agenda (10 points):</strong>
+                                    <ul>
+                                        <li>Full 10 points if there is no clear political or economic agenda.</li>
+                                        <li>5-8 points if there is some bias or leaning toward a particular political or economic viewpoint.</li>
+                                        <li>0-4 points if the content clearly serves a specific political or economic purpose.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <p> 
+                    </div>
+                </div>
+
+                <canvas id="canvas" style="display:none"></canvas>
+                
+                <ul class="legend">
+                    <li><span class="legend-color credibility"></span><strong class="credibility">Source Credibility</strong><span class="credibility2">(<span id="credibility3"></span>/30)</span></li>
+                    <div id="modalOverlay1"></div>
+                    <div id="detailsModal1">
+                        <img src="picture/close.png" alt="Close Icon" class="closeBtn1" id="closeBtn1">
+                        <h2>Source Credibility Details</h2>
+                        <p><strong>News Outlet, Domain (<span id="news_outlet_grade"></span>/15): </strong><span id="news_outlet"></span></p>
+                        <p><strong>Author (<span id="author_grade"></span>/15): </strong><span id="author"></span></p>
+                    </div>
+
+                    <li><span class="legend-color accuracy"></span><strong class="accuracy">Content Accuracy</strong><span class="accuracy2">(<span id="accuracy3"></span>/35)</span></li>
+                    <div id="modalOverlay2"></div>
+                    <div id="detailsModal2">
+                        <img src="picture/close.png" alt="Close Icon" class="closeBtn2" id="closeBtn2">
+                        <h2>Content Accuracy Details</h2>
+                        <p><strong>Citations (<span id="citations_grade"></span>/5): </strong><span id="citations"></span></p>
+                        <p><strong>Comparison with Other Media (<span id="comparison_grade"></span>/15): </strong><span id="comparison"></span></p>
+                        <p><strong>Fact-Checking (<span id="fact_grade"></span>/15): </strong><span id="fact"></span></p>
+                    </div>
+
+                    <li><span class="legend-color consistency"></span><strong class="consistency">Logical Consistency</strong><span class="consistency2">(<span id="consistency3"></span>/10)</span></li>
+                    <div id="modalOverlay3"></div>
+                    <div id="detailsModal3">
+                        <img src="picture/close.png" alt="Close Icon" class="closeBtn3" id="closeBtn3">
+                        <h2>Logical Consistency Details</h2>
+                        <p><strong>Contradictory Details (<span id="contradictory_grade"></span>/10): </strong><span id="contradictory"></span></p>
+                    </div>
+
+                    <li><span class="legend-color style"></span><strong class="style">Content Style</strong><span class="style2">(<span id="style3"></span>/25)</span></li>
+                    <div id="modalOverlay4"></div>
+                    <div id="detailsModal4">
+                        <img src="picture/close.png" alt="Close Icon" class="closeBtn4" id="closeBtn4">
+                        <h2>Content Style Details</h2>
+                        <p><strong>Sensationalism, Emotional Tone (<span id="tone_grade"></span>/15): </strong><span id="tone"></span></p>
+                        <p><strong>Political or Economic Agenda (<span id="political_grade"></span>/10): </strong><span id="political"></span></p>
+                    </div>
+                </ul>
+            </div>
+            <!--历史记录-->
+            
+            
+            <div class="history-section" id="history-section" style="display:none;">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search by date or title" class="search-input">
+                    <button class="search-button" id="search-button">
+                        <img src="picture/search.png" alt="Search">
+                    </button>
+                </div>
+                <div id="no-permission-div" style="display: none;">
+                    <p>No permission to access history</p>
+                </div>
+                <div id="no-matching-records" style="display: none;">
+                    <p>No matching history</p>
+                </div>
+                
+                
+                <div class="history-content" id="history-content">
+                    <!-- 第一天 -->
+                    <div class="history-day" id="history-day1">
+                        <div class="day-label" id="day-label1">Today</div>
+                        
+                        <div class="history-items"><!-- 这里会动态加载当日的历史记录 --></div>
+
+                    </div>
+                    <!-- 第二天 -->
+                    <div class="history-day" id="history-day2">
+                        <div class="day-label" id="day-label2">Yesterday</div>
+                        
+                        <div class="history-items"></div>
+                        <!--history-item-->
+                    </div>
+
+                    <!-- 第三天 -->
+                    <div class="history-day" id="history-day3">
+                        <div class="day-label" id="day-label3">2 Days Ago</div>
+                        <div class="history-items"></div>
+                        <!--history-items 被动态创建后-->
+                    </div>
+
+                    <div class="history-day" id="history-day4">
+                        <div class="day-label" id="day-label4">3 Days Ago</div>
+                        <div class="history-items"></div>
+
+                        <!--history-item-->
+
+                    </div>
+
+                    <div class="history-day" id="history-day5">
+                        <div class="day-label" id="day-label5">4 Days Ago</div>
+                        <div class="history-items"></div>
+
+                        <!--history-item-->
+
+                    </div>
+
+                    <div class="history-day" id="history-day6">
+                        <div class="day-label" id="day-label6">5 Days Ago</div>
+                        <div class="history-items"></div>
+
+                        <!--history-item-->
+                    </div>
+
+                    <div class="history-day" id="history-day7">
+                        <div class="day-label" id="day-label7">6 Days Ago</div>
+                        <div class="history-items"></div>
+
+                        <!--history-item-->
+                    </div>
+                </div>
+            </div>
+            <!--记录分析-->
+            <div class="analysis-section" id="analysis-section" style="display:none;">
+                <div class="summary-item most-news" id="Most-visited">
+                    <span class="summary-title"><strong>Most viewed this week:</strong></span>
+                    <h3 id="most-type"></h3>
+                    <strong id="most-details-link" class="details-link">View more details...</strong>
+                </div>
+                <!--view more detail-->
+                <div class="summary-item" id="Most-visited-expaned" style="display: none;">
+                    <span class="summary-title"><strong>Most viewed this week:</strong></span>
+                    <h3 id="most-type-expaned"></h3>
+                    <div class="circle-chart">
+                        <div class="circle purple"></div>
+                        <div class="circle yellow"></div>
+                        <div class="circle pink"></div>
+                        <div class="circle red"></div>
+                        <div class="circle cyan"></div>
+                    </div>
+
+                    <div id="type-detail">
+                        <div class="date-range" id="date-range">09/10 - 02/10</div>
+                
+                        <div class="record-item">
+                            <div class="color-dot purple"></div>
+                            <div class="record-content">
+                                <div class="record-title">Hard News</div>
+                                <div class="record-details">12 records</div>
+                            </div>
+                            <div class="record-percentage">29%</div>
+                        </div>
+                        <div class="record-item">
+                            <div class="color-dot yellow"></div>
+                            <div class="record-content">
+                                <div class="record-title">Soft News</div>
+                                <div class="record-details">9 records</div>
+                            </div>
+                            <div class="record-percentage">22%</div>
+                        </div>
+                        <div class="record-item">
+                            <div class="color-dot pink"></div>
+                            <div class="record-content">
+                                <div class="record-title">Sports News</div>
+                                <div class="record-details">10 records</div>
+                            </div>
+                            <div class="record-percentage">24%</div>
+                        </div>
+                        <div class="record-item">
+                            <div class="color-dot red"></div>
+                            <div class="record-content">
+                                <div class="record-title">Business News</div>
+                                <div class="record-details">4 records</div>
+                            </div>
+                            <div class="record-percentage">10%</div>
+                        </div>
+                        <div class="record-item">
+                            <div class="color-dot cyan"></div>
+                            <div class="record-content">
+                                <div class="record-title">Health News</div>
+                                <div class="record-details">6 records</div>
+                            </div>
+                            <div class="record-percentage">15%</div>
+                        </div>
+
+                    </div>
+                    
+                    
+                    <div class="collapse-btn" id="collapseBtn">
+                        <img src="picture/up-arrow.png" alt="Collapse" class="arrow">
+                    </div>
+                </div>
+
+
+                <div class="summary-item average-score">
+                    <span class="summary-title"><strong>The average score of this week:</strong></span>
+                    <h3><small></small></h3>
+                    <p class="details-average" id="details-average"><strong>View more details...</strong></p>
+                    <div id="modalOverlay5"></div>
+                    <div id="detailsModal5">
+                        <img src="picture/close.png" alt="Close Icon" class="closeBtn5" id="closeBtn5">
+                        <canvas id="averageScoreChart"></canvas>
+                    </div>
+                </div>
+                <div class="summary-item highest-score">
+                    <span class="summary-title"><strong>Highest score of the week:</strong></span>
+                    <h3><small></small></h3>
+                    <strong><span id="highest-score_date"></span></strong>
+                    <p></p>
+                </div>
+                <div class="summary-item lowest-score">
+                    <span class="summary-title"><strong>Lowest score of the week:</strong></span>
+                    <h3><small></small></h3>
+                    <strong><span id="lowest-score_date"></span></strong>
+                    <p></p>
+                </div>
+            </div>
+
+            <!-- 设置 -->
+            <div class="setting-section" id="setting-section" style="display:none;">
+                
+                <div class="setting-item">
+                    <span class="setting-label">History Record</span>
+                    <label class="switch">
+                        <input type="checkbox" id="history-toggle" class="toggle-switch" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="status-text" id="history-status">On</div>
+
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Large Front Model</span>
+                    <label class="switch">
+                        <input type="checkbox"  id="font-toggle" class="toggle-switch" >
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="status-text" id="font-status">Off
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Theme</span>
+                    <label class="switch">
+                        <input type="checkbox"  id="theme-toggle" class="toggle-switch" checked>
+                        <span class="slider round" ></span>
+                    </label>
+                    <div class="status-text" id="theme-status">Light</div>
+
+                </div>
+                
+                <div class="footer-links">
+                    <p id="details-help">Help</p>
+                    <div id="modalOverlay-help"></div>
+                    <div id="detailsModal-help">
+                        <img src="picture/close.png" alt="Close Icon" class="closeBtn-help" id="closeBtn-help">
+
+                        <div class="header-help">
+                            <img src="picture/help.png" alt="help icon" class="help-icon">
+                            <p class="faq">Frequently Asked Questions</p>
+                        </div>
+    
+                        <div class="faq-item">
+                            <h3>Q1: Why is it sometimes necessary to wait a long time for the analysis results?</h3>
+                            <p>A1: This may be caused by the length of the article or the server delay, please be patient. If the waiting time is too long, you can choose to refresh the page and redetect.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>Q2: Why can't I use plugins on some web pages?</h3>
+                            <p>A2: Our plugin only works on news pages. For some news that is not independent of the news site, the plugin may not work.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>Q3: How should I redetect using plugins?</h3>
+                            <p>A3: Close the plugin and reopen the plugin at the top of the browser, and the plugin will automatically redetect the news.</p>
+                        </div>
+
+                        <div class="faq-item">
+                            <h3>Q4:How can I view the detailed report of the analysis?</h3>
+                            <p>A4:You can click on the score below the report chart to see the score details for each section.</p>
+                        </div>
+                        <br><br><br>
+                        <p>If the above questions do not help you, you can contact us by email <a href="mailto:support@3rdEYE.com">support@3rdEYE.com</a></p>
+                    </div>
+                    <p id="details-privacy">Privacy</p>
+                    <a href="aboutus.html" id="about-us-link">About Us</a>
+                    <div id="modalOverlay6"></div>
+                    <div id="detailsModal6">
+                        <img src="picture/close.png" alt="Close Icon" class="closeBtn6" id="closeBtn6">
+                        <div class="header-privacy-popup">
+                            <img src="icon48.png" alt="TrustedNews Logo" class="logo1">
+                            <h2>Privacy Policy</h2>
+                        </div>
+                        <p>Welcome to <span class="highlight1" id="navigateToAbout">3rdEYE</span>. Before you start using our plugin, we need your consent for the collection and processing of your data.</p>
+                        <p>We collect and process your data to offer you the best possible experience while using our plugin. This involves personalizing content, improving our services, and ensuring the security of your data. As part of our commitment to privacy, all data is stored locally on your device, ensuring that it does not leak or get exposed to unauthorized parties. This local data is also used for long-term analysis to help us better understand your usage patterns and improve the plugin’s functionality over time as your needs evolve.</p>
+                        <p>The types of data we may collect include: <br>
+                           - Browsing activity (e.g., websites visited)<br>
+                           - Device information (e.g., operating system)<br>
+                           - Usage patterns (e.g., plugin interactions, preferences)</p>
+                        <p>Data is collected through your interaction with the plugin, and other technologies. This data will be stored, analysed, and used as outlined in this policy to enhance your experience and optimize the plugin's performance.</p>
+                        <p>Certain data collection is optional. While providing optional data can enhance your experience, it is not mandatory.</p>
+                        <p>We have implemented robust security measures to protect your data from unauthorised access and potential breaches. Your data will not be shared with third parties, and we ensure it remains securely on your device.</p>
+                        <p>You have the right to revoke your consent at any time. Please note that withdrawing consent may limit your access to certain features of the <span class="highlight1" id="navigateToAbout2">3rdEYE</span>. You can adjust your data-sharing preferences in the plugin’s privacy settings.</p>
+                        <p>If you have any questions or concerns about your data or privacy, feel free to contact us at <a href="mailto:support@3rdEYE.com">support@3rdEYE.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+           <!--FOOTER-->
+           <div class="footer" id="bottom">
+            <div class="nav-item" id="nav-report">
+                <img src="picture/report.png" alt="Report">
+                <span>Report</span>
+            </div>
+            
+            <div class="nav-item" id="nav-history">
+                <img src="picture/history.png" alt="History">
+                <span>History</span>
+            </div>
+            
+            <div class="nav-item" id="nav-analysis">
+                <img src="picture/analysis.png" alt="analysis">
+                <span>Analysis</span>
+            </div>
+            <div class="nav-item" id="nav-settings">
+                <img src="picture/settings.png" alt="Settings">
+                <span>Setting</span>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+    <script src="popup.js" defer></script>
+</body>
+</html>
